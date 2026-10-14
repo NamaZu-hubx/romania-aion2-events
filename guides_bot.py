@@ -15,8 +15,7 @@ LOG=logging.getLogger("guides")
 STATE=Path("guides_state.json")
 SOURCES=[
  ("Daeva Guides","https://daevaguides.com/en/guides/","daevaguides.com"),
- ("Aion Builds","https://aionbuilds.com/en/guides","aionbuilds.com"),
-]
+]  # Aion Builds excluded while articles are marked Pre-Launch Data
 CATEGORIES=[
  ("class-builds",["class","build","gladiator","templar","assassin","ranger","sorcerer","spiritmaster","cleric","chanter","stigma"]),
  ("dungeons-bosses",["dungeon","boss","expedition","raid"]),
@@ -44,25 +43,29 @@ def discover(name,url,domain):
     response.raise_for_status()
     soup=BeautifulSoup(response.text,"html.parser")
     found={}
+    # Daeva Guides links point to /en/guides/<slug>/ or /index.html.
+    # Accept real guide slugs, but exclude legal pages and navigation.
+    excluded={"privacy", "terms", "imprint", "contact", "legal", "cookie", "cookies", "about", "index"}
     for a in soup.select("a[href]"):
         href=canonical(urljoin(response.url,a["href"]))
         p=urlparse(href)
-        title=" ".join(a.get_text(" ",strip=True).split())
         if p.scheme not in ("http","https") or p.netloc.lower().removeprefix("www.")!=domain:
             continue
-        if not title or len(title)<9 or len(title)>160:
+        path=p.path.lower().strip("/")
+        parts=path.split("/")
+        if len(parts)<3 or parts[:2]!=["en","guides"]:
             continue
-        # Require explicit article/guide URL patterns, not category/navigation links.
-        path=p.path.lower()
-        if name=="Daeva Guides":
-            acceptable=("/en/guides/" in path and path.rstrip("/")!="/en/guides" and path.count("/")>=4)
-        else:
-            acceptable=("/en/guides/" in path and path.rstrip("/")!="/en/guides" and path.count("/")>=4)
-        if not acceptable or re.search(r"pre.launch|coming soon",title,re.I):
+        slug=parts[2]
+        if slug in excluded or slug.startswith(("privacy-","terms-","imprint-","contact-")):
             continue
-        if re.search(r"pre.launch|coming.soon|outdated",title+" "+href,re.I):
+        if len(parts)>4 or (len(parts)==4 and parts[3]!="index.html"):
             continue
-        found[href]={"title":title,"source":name,"url":href}
+        title=" ".join(a.get_text(" ",strip=True).split())
+        if not title or len(title)<9 or len(title)>180:
+            continue
+        # Prefer the most descriptive anchor if the same URL is repeated.
+        if href not in found or len(title)>len(found[href]["title"]):
+            found[href]={"title":title,"source":name,"url":href}
     return found
 def channel_for(item):
     hay=(item["title"]+" "+urlparse(item["url"]).path.replace("-"," ")).lower()
@@ -117,9 +120,9 @@ def main():
             failures.append(f"{name}: {e}")
     for failure in failures: LOG.warning(failure)
     if not found:
-        raise RuntimeError("No source yielded guide links; no state changed")
+        raise RuntimeError("No valid guide links found; no state changed")
     if mode=="check":
-        for item in list(found.values())[:12]:
+        for item in list(found.values())[:20]:
             LOG.info("EXAMPLE [%s] %s -> %s",channel_for(item),item["title"],item["url"])
         LOG.info("CHECK ONLY: no Discord messages and no state changes")
         return
