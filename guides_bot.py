@@ -65,12 +65,20 @@ def discover(name,url,domain):
         if slug in excluded or slug.startswith(("privacy-","terms-","imprint-","contact-")):
             continue
         if len(parts)>4 or (len(parts)==4 and parts[3]!="index.html"):
+            LOG.info("FILTER REJECT path=%r",path)
             continue
-        title=" ".join(a.get_text(" ",strip=True).split())
-        if title.lower().endswith("open the guide →"):
-            title=title[: -len("open the guide →")].strip()
+        # Cards include title + long description + reading time in anchor text.
+        # Use the heading instead of rejecting the entire anchor as too long.
+        heading=a.find(["h2", "h3", "h4"])
+        if heading:
+            title=" ".join(heading.get_text(" ", strip=True).split())
+        else:
+            raw=" ".join(a.get_text(" ",strip=True).split())
+            title=raw.split("Open the guide", 1)[0].strip()
         if not title or len(title)<9 or len(title)>180:
+            LOG.info("FILTER REJECT title-length=%d slug=%r text=%r",len(title),slug,title[:110])
             continue
+        LOG.info("FILTER ACCEPT slug=%r title=%r",slug,title[:110])
         # Prefer the most descriptive anchor if the same URL is repeated.
         if href not in found or len(title)>len(found[href]["title"]):
             found[href]={"title":title,"source":name,"url":href}
