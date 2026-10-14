@@ -1,0 +1,27 @@
+name: Update AION 2 events
+on:
+  schedule:
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: aion2-event-board
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements_events.txt
+      - run: python -m pip install -r requirements_events.txt tzdata
+      - name: Update Discord panel
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
+        run: python events_once.py
