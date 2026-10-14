@@ -53,7 +53,7 @@ def discover(name,url,domain):
     # Accept real guide slugs, but exclude legal pages and navigation.
     excluded={"privacy", "terms", "imprint", "contact", "legal", "cookie", "cookies", "about", "index"}
     for a in soup.select("a[href]"):
-        href=canonical(urljoin(response.url,a["href"]))
+        href=canonical(urljoin(url.rstrip("/") + "/", a["href"]))
         p=urlparse(href)
         if p.scheme not in ("http","https") or p.netloc.lower().removeprefix("www.")!=domain:
             continue
@@ -67,11 +67,14 @@ def discover(name,url,domain):
         if len(parts)>4 or (len(parts)==4 and parts[3]!="index.html"):
             continue
         title=" ".join(a.get_text(" ",strip=True).split())
+        if title.lower().endswith("open the guide →"):
+            title=title[: -len("open the guide →")].strip()
         if not title or len(title)<9 or len(title)>180:
             continue
         # Prefer the most descriptive anchor if the same URL is repeated.
         if href not in found or len(title)>len(found[href]["title"]):
             found[href]={"title":title,"source":name,"url":href}
+    LOG.info("FILTER RESULT: %d valid guide URLs", len(found))
     return found
 def channel_for(item):
     hay=(item["title"]+" "+urlparse(item["url"]).path.replace("-"," ")).lower()
