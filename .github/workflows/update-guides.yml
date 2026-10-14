@@ -1,42 +1,45 @@
 name: Update AION 2 guides
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "check (preview) or publish (post/update Discord)"
+        required: true
+        default: check
+        type: choice
+        options: [check, publish]
   schedule:
-    - cron: "17 8 * * *"
+    - cron: '23 6 * * *'
 permissions:
   contents: write
 concurrency:
-  group: romania-aion2-guides
+  group: aion2-guides
   cancel-in-progress: false
 jobs:
   guides:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GUIDES_MODE: ${{ github.event_name == 'schedule' && 'publish' || inputs.mode }}
+      DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+      DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - run: pip install -r requirements_guides.txt
-      - name: Discover and publish
-        env:
-          GUIDES_MODE: check
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
+          python-version: '3.12'
+      - run: python -m pip install -r requirements_guides.txt
+      - name: Sync guides
         run: python guides_bot.py
-      - name: Save publication history if changed
+      - name: Persist Discord message IDs even if sync partially fails
+        if: always()
         run: |
-          if ! git diff --quiet -- guides_state.json; then
+          if [ -f guides_state.json ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add guides_state.json
-            git commit -m "Update published AION 2 guides"
-            git push
-          elif [ -n "$(git ls-files --others --exclude-standard guides_state.json)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add guides_state.json
-            git commit -m "Initialize AION 2 guide history"
-            git push
+            if ! git diff --cached --quiet; then
+              git commit -m "Save AION 2 guide sync state"
+              git push
+            fi
           fi
