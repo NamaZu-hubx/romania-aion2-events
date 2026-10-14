@@ -113,7 +113,7 @@ def extract_article(item):
         node.decompose()
     blocks=[]
     for node in root.find_all(["h1","h2","h3","h4","p","li","pre","blockquote","table","img"],recursive=True):
-        if node.find_parent(["p","li","pre","blockquote","table"],limit=5) is not None:
+        if node.find_parents(["p","li","pre","blockquote","table"], limit=5) is not None:
             continue
         if node.name=="img":
             src=node.get("src") or node.get("data-src")
