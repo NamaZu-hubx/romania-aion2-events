@@ -3,12 +3,12 @@
 Default MODE=check: inspect sources without posting or changing history.
 MODE=publish: seed existing links on first run; post only later discoveries.
 """
-import os, re, json, sys, logging, asyncio
+import os, re, json, sys, logging, asyncio, hashlib
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, urldefrag
 from datetime import datetime, timezone
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
 
 logging.basicConfig(level=logging.INFO,format="%(levelname)s %(message)s")
 LOG=logging.getLogger("guides")
@@ -18,7 +18,7 @@ SOURCES=[
 ]  # Aion Builds excluded while articles are marked Pre-Launch Data
 CATEGORIES=[
  ("class-builds",["class","build","gladiator","templar","assassin","ranger","sorcerer","spiritmaster","cleric","chanter","stigma"]),
- ("dungeons-bosses",["dungeon","boss","expedition","raid"]),
+ ("dungeons-bosses",["dungeon","boss","expedition","raid","fire temple","krao cave"]),
  ("pvp-abyss",["pvp","abyss","siege","rift","arena"]),
  ("gear-progression",["gear","equipment","progression","enhancement","daevanion","enchant"]),
  ("crafting-farming",["craft","farming","gather","profession","material"]),
@@ -90,80 +90,188 @@ def channel_for(item):
         if any(re.search(r"\b"+re.escape(term)+r"\b",hay) for term in terms):
             return channel
     return "guides-library"
-def load_state():
-    if STATE.exists():
-        data=json.loads(STATE.read_text(encoding="utf-8"))
-        if not isinstance(data,dict) or not isinstance(data.get("seen"),dict):
-            raise ValueError("Invalid guides_state.json")
-        return data
-    return {"seen":{},"initialized":False}
-async def publish(items,token,guild_id):
+
+# v7: Full-text republication is intended only for sources where you hold permission.
+# Discord limits messages to 2,000 characters. Split by paragraphs and preserve order.
+def extract_article(item):
+    response=requests.get(item["url"],headers=HEADERS,timeout=35)
+    response.raise_for_status()
+    soup=BeautifulSoup(response.text,"html.parser")
+    for tag in soup.select("script,style,nav,footer,header,aside,form,iframe,noscript,svg"):
+        tag.decompose()
+    candidates=[]
+    for selector in ("article", "main article", "main", "[itemprop='articleBody']", ".prose", ".article-content", ".post-content"):
+        for node in soup.select(selector):
+            score=len(node.get_text(" ",strip=True))
+            if score>250: candidates.append((score,node))
+        if candidates: break
+    if not candidates:
+        raise RuntimeError(f"Article body not located for {item['url']}; refusing to publish navigation")
+    root=max(candidates,key=lambda x:x[0])[1]
+    # Remove page chrome embedded within the article container.
+    for node in root.select("nav,aside,.breadcrumb,.breadcrumbs,.related,.share,.social,.toc,.table-of-contents"):
+        node.decompose()
+    blocks=[]
+    for node in root.find_all(["h1","h2","h3","h4","p","li","pre","blockquote","table","img"],recursive=True):
+        if node.find_parent(["p","li","pre","blockquote","table"],limit=5) is not None:
+            continue
+        if node.name=="img":
+            src=node.get("src") or node.get("data-src")
+            if src:
+                blocks.append("Image: "+urljoin(item["url"],src))
+            continue
+        if node.name=="table":
+            rows=[]
+            for tr in node.select("tr"):
+                vals=[" ".join(c.stripped_strings) for c in tr.find_all(["th","td"],recursive=False)]
+                if vals: rows.append(" | ".join(vals))
+            if rows: blocks.append("\n".join(rows))
+            continue
+        value=" ".join(node.stripped_strings)
+        if not value: continue
+        if node.name.startswith("h"):
+            value="**"+value.replace("*", "")+"**"
+        elif node.name=="li":
+            value="• "+value
+        elif node.name=="blockquote":
+            value="> "+value
+        blocks.append(value)
+    body="\n\n".join(blocks).strip()
+    if len(body)<350:
+        raise RuntimeError(f"Article extraction too short ({len(body)} chars) for {item['url']}")
+    return body
+
+def chunks(body, limit=1850):
+    result=[]
+    current=""
+    for paragraph in body.split("\n\n"):
+        paragraph=paragraph.strip()
+        if not paragraph: continue
+        while len(paragraph)>limit:
+            cut=paragraph.rfind(" ",0,limit)
+            if cut<limit//2: cut=limit
+            head,paragraph=paragraph[:cut],paragraph[cut:].lstrip()
+            if current: result.append(current);current=""
+            result.append(head)
+        if len(current)+len(paragraph)+2>limit:
+            if current:result.append(current)
+            current=paragraph
+        else:
+            current=(current+"\n\n"+paragraph).strip()
+    if current: result.append(current)
+    return result
+
+def read_state():
+    if not STATE.exists(): return {"version":7,"guides":{}}
+    old=json.loads(STATE.read_text(encoding="utf-8"))
+    if not isinstance(old,dict):raise ValueError("Bad state JSON")
+    # Old `seen` is only an index of URLs, not proof that full guides were posted.
+    return {"version":7,"guides":old.get("guides",{})}
+
+def save_state(state):
+    tmp=STATE.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    tmp.replace(STATE)
+
+def channel_for_full(item):
+    slug=urlparse(item["url"]).path.lower()
+    if any(x in slug for x in ("field-boss", "fire-temple", "krao-cave", "dungeon")):
+        return "dungeons-bosses"
+    if "stigma" in slug: return "class-builds"
+    return channel_for(item)
+
+async def sync_discord(items,state,token,guild_id):
     import discord
-    intents=discord.Intents.default()
-    client=discord.Client(intents=intents)
-    posted=[]
+    client=discord.Client(intents=discord.Intents.default())
+    allowed=discord.AllowedMentions.none()
     @client.event
     async def on_ready():
         try:
             guild=client.get_guild(int(guild_id))
             if not guild: raise RuntimeError("Discord guild not found")
-            for item in items:
-                channel_name=channel_for(item)
+            for index,(item,body,digest) in enumerate(items,1):
+                url=item["url"]
+                saved=state["guides"].get(url,{})
+                if saved.get("hash")==digest and saved.get("complete"):
+                    LOG.info("Unchanged: %s",url);continue
+                channel_name=saved.get("channel") or channel_for_full(item)
                 channel=discord.utils.get(guild.text_channels,name=channel_name)
-                if channel is None: raise RuntimeError(f"Missing channel #{channel_name}")
-                embed=discord.Embed(title=item["title"][:256],url=item["url"],
-                    description=DESCRIPTIONS[channel_name],color=0x334472)
-                embed.add_field(name="Sursă",value=item["source"])
-                embed.set_footer(text="Link extern • Verificați compatibilitatea cu versiunea EU")
-                await channel.send(embed=embed,allowed_mentions=discord.AllowedMentions.none())
-                posted.append(item["url"])
-                LOG.info("Published %s to #%s",item["url"],channel_name)
+                if channel is None:raise RuntimeError(f"Missing channel #{channel_name}")
+                try:
+                    if saved.get("message_id"):
+                        message=await channel.fetch_message(int(saved["message_id"]))
+                    else:
+                        embed=discord.Embed(title=item["title"][:256],url=url,
+                            description="Full guide in the thread below. Source: "+item["source"],color=0x334472)
+                        message=await channel.send(embed=embed,allowed_mentions=allowed)
+                        saved={"channel":channel_name,"message_id":message.id,"thread_id":None,"part_ids":[],"complete":False}
+                        state["guides"][url]=saved;save_state(state)
+                    if saved.get("thread_id"):
+                        thread=client.get_channel(int(saved["thread_id"])) or await client.fetch_channel(int(saved["thread_id"]))
+                    else:
+                        thread=await message.create_thread(name=item["title"][:100],auto_archive_duration=1440)
+                        saved["thread_id"]=thread.id;save_state(state)
+                    parts=chunks(body)
+                    if len(parts)>150:raise RuntimeError(f"Guide too long ({len(parts)} messages): {url}")
+                    # Edits are in place, not duplicate threads. Save after every part so a retry resumes.
+                    ids=saved.setdefault("part_ids",[])
+                    for n,part in enumerate(parts):
+                        payload=f"**Part {n+1}/{len(parts)}**\n{part}"
+                        if n<len(ids):
+                            old=await thread.fetch_message(int(ids[n]))
+                            if old.content!=payload:await old.edit(content=payload,allowed_mentions=allowed)
+                        else:
+                            new=await thread.send(payload,allowed_mentions=allowed)
+                            ids.append(new.id);save_state(state)
+                        await asyncio.sleep(0.35)
+                    for extra in ids[len(parts):]:
+                        old=await thread.fetch_message(int(extra));await old.delete()
+                    saved["part_ids"]=ids[:len(parts)]
+                    saved["hash"]=digest
+                    saved["complete"]=True
+                    saved["title"]=item["title"]
+                    saved["updated_at"]=datetime.now(timezone.utc).isoformat()
+                    save_state(state)
+                    LOG.info("Synced %d/%d: %s (%d parts) -> #%s",index,len(items),url,len(parts),channel_name)
+                except Exception:
+                    save_state(state)
+                    LOG.exception("Could not sync %s",url)
+                    raise
         finally:
             await client.close()
     await client.start(token)
-    return posted
+
 def main():
     mode=os.getenv("GUIDES_MODE","check").lower()
-    if mode not in ("check","publish"): raise ValueError("GUIDES_MODE must be check or publish")
+    if mode not in ("check","publish"):raise ValueError("GUIDES_MODE must be check or publish")
     found={}
-    failures=[]
     for name,url,domain in SOURCES:
+        items=discover(name,url,domain)
+        if not items:raise RuntimeError("No guide links found; refusing empty scrape")
+        found.update(items)
+    state=read_state()
+    prepared=[]
+    failures=[]
+    for item in found.values():
         try:
-            items=discover(name,url,domain)
-            LOG.info("%s: %d candidate guides",name,len(items))
-            if not items: failures.append(f"{name}: no matching article links")
-            found.update(items)
+            body=extract_article(item)
+            digest=hashlib.sha256(body.encode("utf-8")).hexdigest()
+            if state["guides"].get(item["url"],{}).get("hash")==digest and state["guides"][item["url"]].get("complete"):
+                continue
+            prepared.append((item,body,digest))
+            LOG.info("READY [%s] %s: %d chars, %d messages",channel_for_full(item),item["title"],len(body),len(chunks(body)))
         except Exception as e:
-            failures.append(f"{name}: {e}")
-    for failure in failures: LOG.warning(failure)
-    if not found:
-        raise RuntimeError("No valid guide links found; no state changed")
-    if mode=="check":
-        for item in list(found.values())[:20]:
-            LOG.info("EXAMPLE [%s] %s -> %s",channel_for(item),item["title"],item["url"])
-        LOG.info("CHECK ONLY: no Discord messages and no state changes")
-        return
-    # Never seed from a partially broken scrape: avoids treating old articles as new later.
+            failures.append((item["url"],str(e)))
     if failures:
-        raise RuntimeError("Source errors in publish mode; no Discord messages/state changes")
-    state=load_state()
-    now=datetime.now(timezone.utc).isoformat()
-    if not state["initialized"]:
-        state["seen"]={url:now for url in found}
-        state["initialized"]=True
-        STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-        LOG.info("First run: indexed %d existing guides without posting",len(found))
+        for url,error in failures:LOG.error("Extraction failed %s: %s",url,error)
+        raise RuntimeError("Extraction failed; no publishing (avoids incomplete import)")
+    LOG.info("Discovered %d guides; %d need publishing/updating",len(found),len(prepared))
+    if mode=="check":
+        LOG.info("CHECK ONLY: no Discord messages or state changes")
         return
-    new=[item for url,item in found.items() if url not in state["seen"]]
-    LOG.info("New candidates: %d",len(new))
-    # Fail closed if the source suddenly expands; prevents accidental mass posting.
-    if len(new)>5:
-        raise RuntimeError("More than 5 new links; manual inspection needed; no posts")
-    if new:
-        token=os.environ["DISCORD_BOT_TOKEN"]
-        guild_id=os.environ["DISCORD_GUILD_ID"]
-        posted=asyncio.run(publish(new,token,guild_id))
-        for url in posted: state["seen"][url]=now
-        STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    if prepared:
+        asyncio.run(sync_discord(prepared,state,os.environ["DISCORD_BOT_TOKEN"],os.environ["DISCORD_GUILD_ID"]))
+    save_state(state)
+
 if __name__=="__main__":
     main()
