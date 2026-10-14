@@ -42,6 +42,12 @@ def discover(name,url,domain):
     response=requests.get(url,headers=HEADERS,timeout=25)
     response.raise_for_status()
     soup=BeautifulSoup(response.text,"html.parser")
+    LOG.info("DIAGNOSTIC HTTP=%s final_url=%s html_bytes=%d page_title=%r", response.status_code, response.url, len(response.content), soup.title.get_text(" ",strip=True)[:150] if soup.title else "(none)")
+    links=soup.select("a[href]")
+    LOG.info("DIAGNOSTIC total_anchor_links=%d",len(links))
+    for a in links[:30]:
+        LOG.info("DIAGNOSTIC LINK text=%r href=%r",a.get_text(" ",strip=True)[:100],a.get("href","")[:220])
+    LOG.info("DIAGNOSTIC guide_href_matches=%d",sum("/guides/" in a.get("href","") for a in links))
     found={}
     # Daeva Guides links point to /en/guides/<slug>/ or /index.html.
     # Accept real guide slugs, but exclude legal pages and navigation.
