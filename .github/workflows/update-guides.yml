@@ -1,0 +1,42 @@
+name: Update AION 2 guides
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: romania-aion2-guides
+  cancel-in-progress: false
+jobs:
+  guides:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements_guides.txt
+      - name: Discover and publish
+        env:
+          GUIDES_MODE: check
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
+        run: python guides_bot.py
+      - name: Save publication history if changed
+        run: |
+          if ! git diff --quiet -- guides_state.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add guides_state.json
+            git commit -m "Update published AION 2 guides"
+            git push
+          elif [ -n "$(git ls-files --others --exclude-standard guides_state.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add guides_state.json
+            git commit -m "Initialize AION 2 guide history"
+            git push
+          fi
