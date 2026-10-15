@@ -83,13 +83,15 @@ def main():
         if not found:
             LOG.warning("Missing Discord class role: %s", name)
 
+    guild = api("GET", f"/guilds/{GUILD_ID}")
+    owner_id = guild["owner_id"]
     me = api("GET", "/users/@me")
     own_id = me["id"]
     changed = skipped = failed = checked = 0
     for member in members():
         checked += 1
         user = member["user"]
-        if user["id"] == own_id or user.get("bot"):
+        if user["id"] == own_id or user["id"] == owner_id or user.get("bot"):
             continue
         selected = [class_by_role[r] for r in member.get("roles", []) if r in class_by_role]
         if len(selected) != 1:
