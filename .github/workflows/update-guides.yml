@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      GUIDES_MODE: check
+      GUIDES_MODE: ${{ github.event_name == 'schedule' && 'check' || inputs.mode || 'check' }}
       DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
       DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
     steps:
