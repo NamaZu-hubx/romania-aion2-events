@@ -15,6 +15,7 @@ LOG=logging.getLogger("guides")
 STATE=Path("guides_state.json")
 SOURCES=[
  ("Daeva Guides","https://daevaguides.com/en/guides/","daevaguides.com"),
+ ("Aion2t","https://aion2t.com/guides","aion2t.com"),
 ]  # Aion Builds excluded while articles are marked Pre-Launch Data
 CATEGORIES=[
  ("class-builds",["class","build","gladiator","templar","assassin","ranger","sorcerer","spiritmaster","cleric","chanter","stigma"]),
@@ -39,6 +40,8 @@ def canonical(url):
     p=urlparse(url)
     return p._replace(query="",fragment="",path=p.path.rstrip("/") or "/").geturl()
 def discover(name,url,domain):
+    if domain == "aion2t.com":
+        return discover_aion2t(name,url,domain)
     response=requests.get(url,headers=HEADERS,timeout=25)
     response.raise_for_status()
     soup=BeautifulSoup(response.text,"html.parser")
@@ -84,6 +87,45 @@ def discover(name,url,domain):
             found[href]={"title":title,"source":name,"url":href}
     LOG.info("FILTER RESULT: %d valid guide URLs", len(found))
     return found
+def discover_aion2t(name,url,domain):
+    response=requests.get(url,headers=HEADERS,timeout=25)
+    response.raise_for_status()
+    soup=BeautifulSoup(response.text,"html.parser")
+    found={}
+    for a in soup.select("a[href]"):
+        href=canonical(urljoin(url,a["href"]))
+        p=urlparse(href)
+        if p.netloc.lower().removeprefix("www.")!=domain: continue
+        parts=p.path.strip("/").split("/")
+        if len(parts)!=2 or parts[0]!="guides" or parts[1] in ("", "index"): continue
+        heading=a.find(["h2","h3","h4"])
+        title=" ".join((heading or a).get_text(" ",strip=True).split())
+        if not (8<=len(title)<=180):
+            title=parts[1].replace("-"," ").title()
+        found[href]={"title":title,"source":name,"url":href}
+    LOG.info("AION2T DISCOVERY: %d guides",len(found))
+    return found
+
+def discover_class_pages():
+    url="https://daevaguides.com/en/"
+    response=requests.get(url,headers=HEADERS,timeout=25)
+    response.raise_for_status()
+    soup=BeautifulSoup(response.text,"html.parser")
+    found={}
+    names=("gladiator","templar","assassin","ranger","sorcerer","spiritmaster","cleric","chanter")
+    for a in soup.select("a[href]"):
+        href=canonical(urljoin(url,a["href"]))
+        p=urlparse(href)
+        if p.netloc.lower().removeprefix("www.")!="daevaguides.com":continue
+        path=p.path.lower().strip("/").split("/")
+        matches=[c for c in names if c in path]
+        if len(matches)!=1:continue
+        cls=matches[0]
+        if href not in found:
+            found[href]={"title":cls.title()+" — Full Class Guide","source":"Daeva Guides","url":href,"class_channel":cls}
+    LOG.info("DAEVA CLASS PAGES: %d found",len(found))
+    return found
+
 def channel_for(item):
     hay=(item["title"]+" "+urlparse(item["url"]).path.replace("-"," ")).lower()
     for channel,terms in CATEGORIES:
@@ -113,7 +155,7 @@ def extract_article(item):
         node.decompose()
     blocks=[]
     for node in root.find_all(["h1","h2","h3","h4","p","li","pre","blockquote","table","img"],recursive=True):
-        if node.find_parents(["p","li","pre","blockquote","table"], limit=5):
+        if node.find_parent(["p","li","pre","blockquote","table"]):
             continue
         if node.name=="img":
             src=node.get("src") or node.get("data-src")
@@ -174,6 +216,9 @@ def save_state(state):
     tmp.replace(STATE)
 
 def channel_for_full(item):
+    if item.get("class_channel"): return item["class_channel"]
+    if item["source"]=="Aion2t":
+        return "dungeons-bosses" if any(w in item["title"].lower() for w in ("dungeon","temple","cave","sanctuary","boss","den","canyon","citadel","island","draupnir","hall","cradle","research","nightmare","mirror")) else "guides-library"
     slug=urlparse(item["url"]).path.lower()
     if any(x in slug for x in ("field-boss", "fire-temple", "krao-cave", "dungeon")):
         return "dungeons-bosses"
@@ -247,8 +292,10 @@ def main():
     found={}
     for name,url,domain in SOURCES:
         items=discover(name,url,domain)
-        if not items:raise RuntimeError("No guide links found; refusing empty scrape")
+        if not items:raise RuntimeError(f"No guide links found for {name}; refusing empty scrape")
         found.update(items)
+    class_items=discover_class_pages()
+    found.update(class_items)
     state=read_state()
     prepared=[]
     failures=[]
