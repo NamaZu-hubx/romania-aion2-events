@@ -31,7 +31,1036 @@
       "complete": true,
       "hash": "2da7a499ef3fde67ebb4170b89dd0d14f0df7550a3a11c4929da1df0258d896e",
       "title": "Aion 2 Beginner Guide: Your First Week, Day by Day",
-      "updated_at": "2026-10-15T17:25:53.401530+00:00"
+      "updated_at": "2026-10-15T17:37:00.586134+00:00",
+      "format_version": 2
+    },
+    "https://daevaguides.com/en/guides/leveling-1-45/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345766671814743,
+      "thread_id": 1560345766671814743,
+      "part_ids": [
+        1560345768907509824,
+        1560345771692261469,
+        1560345774070698098,
+        1560345777518284882
+      ],
+      "complete": true,
+      "hash": "2577ea0920a077bbdab1748f45ada79a129a2412e4914b126fb0eaf03bc48cc1",
+      "format_version": 2,
+      "title": "Aion 2 Leveling Guide: 1–45 the Fast Way",
+      "updated_at": "2026-10-15T17:37:03.612237+00:00"
+    },
+    "https://daevaguides.com/en/guides/macros/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345779699196086,
+      "thread_id": 1560345779699196086,
+      "part_ids": [
+        1560345782564167741,
+        1560345784623431703,
+        1560345787198738564,
+        1560345789707063337,
+        1560345792395616261,
+        1560345794807341066
+      ],
+      "complete": true,
+      "hash": "e47183820b1f0361c7021a520389247f553abb0a6787849b42f4d623afc7494e",
+      "format_version": 2,
+      "title": "Aion 2 Macro Guide for Beginners",
+      "updated_at": "2026-10-15T17:37:07.738417+00:00"
+    },
+    "https://daevaguides.com/en/guides/skill-specializations/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345797143429211,
+      "thread_id": 1560345797143429211,
+      "part_ids": [
+        1560345799018152109,
+        1560345801706709093,
+        1560345804173086813,
+        1560345806744060008,
+        1560345808908320771
+      ],
+      "complete": true,
+      "hash": "ce5f12fe20b56cbc6d524c5743fbf27475f7c55d27a68dc59aad291004486452",
+      "format_version": 2,
+      "title": "Aion 2 Skill Specializations: You Have to Equip Them Yourself",
+      "updated_at": "2026-10-15T17:37:11.093299+00:00"
+    },
+    "https://daevaguides.com/en/guides/best-settings/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345813375389757,
+      "thread_id": 1560345813375389757,
+      "part_ids": [
+        1560345815980048398,
+        1560345818958004265,
+        1560345821566734370,
+        1560345824704204873,
+        1560345826897690746,
+        1560345829036785685,
+        1560345831234867414,
+        1560345833239486538,
+        1560345836469223546
+      ],
+      "complete": true,
+      "hash": "181b17eadfdcbc24f82a25a1214313d1f003b4bd58b37201d080d92680b09a6a",
+      "format_version": 2,
+      "title": "Aion 2 Best Settings",
+      "updated_at": "2026-10-15T17:37:21.815208+00:00"
+    },
+    "https://daevaguides.com/en/guides/system-requirements/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345856002097233,
+      "thread_id": 1560345856002097233,
+      "part_ids": [
+        1560345858464288860,
+        1560345860724752449,
+        1560345863627210855
+      ],
+      "complete": true,
+      "hash": "ef9271c1035e815b501dae407320a1c54072e08ee557aad499779cc92f728885",
+      "format_version": 2,
+      "title": "Aion 2 System Requirements",
+      "updated_at": "2026-10-15T17:37:24.144371+00:00"
+    },
+    "https://daevaguides.com/en/guides/elyos-or-asmodian/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345865707585788,
+      "thread_id": 1560345865707585788,
+      "part_ids": [
+        1560345870938021938,
+        1560345873173708992
+      ],
+      "complete": true,
+      "hash": "ddda727720ecbc3628220bcd180d695a7b99649a6e95d45027d0ccf9254b1b5a",
+      "format_version": 2,
+      "title": "Elyos or Asmodian? Which Faction to Choose in Aion 2",
+      "updated_at": "2026-10-15T17:37:26.415386+00:00"
+    },
+    "https://daevaguides.com/en/guides/which-server/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345875233120330,
+      "thread_id": 1560345875233120330,
+      "part_ids": [
+        1560345880182263829,
+        1560345882887590041,
+        1560345885613756547
+      ],
+      "complete": true,
+      "hash": "f927093150248e518ecd198a4a78705b8e2ab34b3ed725f4147069898f93c2d3",
+      "format_version": 2,
+      "title": "Which Aion 2 Server Should I Pick? Regions, Server List and Transfers",
+      "updated_at": "2026-10-15T17:37:29.385755+00:00"
+    },
+    "https://daevaguides.com/en/guides/which-class/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345887392268411,
+      "thread_id": 1560345887392268411,
+      "part_ids": [
+        1560345889711857756,
+        1560345892320706765,
+        1560345894644359240,
+        1560345896955281532,
+        1560345899723530361
+      ],
+      "complete": true,
+      "hash": "d0901254033a178668f34dde48eddb95134e60e63260b89e2129a095fa9b572e",
+      "format_version": 2,
+      "title": "Which Aion 2 Class Should I Play? Quiz and All 8 Classes Compared",
+      "updated_at": "2026-10-15T17:37:32.745257+00:00"
+    },
+    "https://daevaguides.com/en/guides/assassin-vs-ranger/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345901900234864,
+      "thread_id": 1560345901900234864,
+      "part_ids": [
+        1560345904278409247,
+        1560345909508702323,
+        1560345913283584003
+      ],
+      "complete": true,
+      "hash": "b86bcb94db35f45bcd2da5ee6da355a543840ef0a369828f68cf7ab51b2077a0",
+      "format_version": 2,
+      "title": "Aion 2 Assassin vs Ranger — daggers or bow?",
+      "updated_at": "2026-10-15T17:37:36.091564+00:00"
+    },
+    "https://daevaguides.com/en/guides/cleric-vs-chanter/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345915632656396,
+      "thread_id": 1560345915632656396,
+      "part_ids": [
+        1560345918484521037,
+        1560345920690983043,
+        1560345923110830183
+      ],
+      "complete": true,
+      "hash": "647a2709d626e9b93bd328c20df2cd21dd14618c48bbe0465d71964e281f5294",
+      "format_version": 2,
+      "title": "Aion 2 Cleric vs Chanter — which support class is right for you?",
+      "updated_at": "2026-10-15T17:37:38.403144+00:00"
+    },
+    "https://daevaguides.com/en/guides/sorcerer-vs-elementalist/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345925883404319,
+      "thread_id": 1560345925883404319,
+      "part_ids": [
+        1560345927494148290,
+        1560345929775587363,
+        1560345932581707837
+      ],
+      "complete": true,
+      "hash": "afc3132d377fd35d2306672d44f9d60e08524c2f2f23fce80a7a8018a36a2c16",
+      "format_version": 2,
+      "title": "Aion 2 Sorcerer vs Spiritmaster (Elementalist) — which mage should you play?",
+      "updated_at": "2026-10-15T17:37:40.567193+00:00"
+    },
+    "https://daevaguides.com/en/guides/templar-vs-gladiator/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345935211667600,
+      "thread_id": 1560345935211667600,
+      "part_ids": [
+        1560345937451286555,
+        1560345940664131758,
+        1560345943000227942
+      ],
+      "complete": true,
+      "hash": "62c80119305adb11971525feadc74808c6c91833b95cb666e402d915474cfa55",
+      "format_version": 2,
+      "title": "Aion 2 Templar vs Gladiator — which tank is right for you?",
+      "updated_at": "2026-10-15T17:37:43.099066+00:00"
+    },
+    "https://daevaguides.com/en/guides/best-class-beginners/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345945269473351,
+      "thread_id": 1560345945269473351,
+      "part_ids": [
+        1560345946754261094,
+        1560345949547532291,
+        1560345951938420778
+      ],
+      "complete": true,
+      "hash": "688e6d59ed52982cdcc1c91a8c0a441eb26fae628d65435a7b2171317d4fde89",
+      "format_version": 2,
+      "title": "Best Aion 2 Class for Beginners",
+      "updated_at": "2026-10-15T17:37:45.329607+00:00"
+    },
+    "https://daevaguides.com/en/guides/best-class-high-ping/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345954752667709,
+      "thread_id": 1560345954752667709,
+      "part_ids": [
+        1560345956090650669,
+        1560345958666076212,
+        1560345961383989249
+      ],
+      "complete": true,
+      "hash": "a8d15d7e8d82538e5ab5af258608eeb589d94ce3e56865381bde251bed9b23b4",
+      "format_version": 2,
+      "title": "Best Class for High Ping in Aion 2",
+      "updated_at": "2026-10-15T17:37:47.689237+00:00"
+    },
+    "https://daevaguides.com/en/guides/best-class-solo/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560345964634701845,
+      "thread_id": 1560345964634701845,
+      "part_ids": [
+        1560345966689652919,
+        1560345968971481249
+      ],
+      "complete": true,
+      "hash": "d3976f59b9488640d7916eada1360aa0338768bcdfa2099b042915e4df361779",
+      "format_version": 2,
+      "title": "Best Solo Class in Aion 2",
+      "updated_at": "2026-10-15T17:37:49.281298+00:00"
+    },
+    "https://daevaguides.com/en/guides/after-45/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345971173363856,
+      "thread_id": 1560345971173363856,
+      "part_ids": [
+        1560345972586979415,
+        1560345975271202908,
+        1560345977544638615,
+        1560345982938644611
+      ],
+      "complete": true,
+      "hash": "3c77f280ef431c3c08c1265a9474259eb8bfc2337861098475809cb045444199",
+      "format_version": 2,
+      "title": "What to Do After Level 45 in Aion 2: Step by Step",
+      "updated_at": "2026-10-15T17:37:52.646129+00:00"
+    },
+    "https://daevaguides.com/en/guides/combat-power/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560345985371344977,
+      "thread_id": 1560345985371344977,
+      "part_ids": [
+        1560345987489206273,
+        1560345990064775209,
+        1560345992409120870,
+        1560345994514661537,
+        1560345996913803416
+      ],
+      "complete": true,
+      "hash": "f51555c01bec8fb8674194ddb24aa983dc1ba377fd974454dc6229829bbd7ba8",
+      "format_version": 2,
+      "title": "Aion 2 Combat Power Explained: CP vs Item Level",
+      "updated_at": "2026-10-15T17:37:55.900175+00:00"
+    },
+    "https://daevaguides.com/en/guides/field-bosses/index.html": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560345998956695634,
+      "thread_id": 1560345998956695634,
+      "part_ids": [
+        1560346000759980164,
+        1560346002928570431,
+        1560346005616992358,
+        1560346008184168449,
+        1560346011266842727,
+        1560346013728776194
+      ],
+      "complete": true,
+      "hash": "37698bcd3290cdccfecd87b9a0d8e75e91e9724974198fb5b0cc0225690da702",
+      "format_version": 2,
+      "title": "Aion 2 Field Bosses (World Bosses): Respawn, Locations, Loot",
+      "updated_at": "2026-10-15T17:37:59.971217+00:00"
+    },
+    "https://daevaguides.com/en/guides/odyle-energy/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346016153206875,
+      "thread_id": 1560346016153206875,
+      "part_ids": [
+        1560346018682380349,
+        1560346021433843713,
+        1560346023963131947
+      ],
+      "complete": true,
+      "hash": "28cc5c7be4c949b349083c0afa83ecc6829e10fe11cfe89d1e82bc241fd575a8",
+      "format_version": 2,
+      "title": "Aion 2 Odyle Energy: How Much You Get and Where to Spend It",
+      "updated_at": "2026-10-15T17:38:02.503817+00:00"
+    },
+    "https://daevaguides.com/en/guides/dungeons-list/index.html": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346026689429505,
+      "thread_id": 1560346026689429505,
+      "part_ids": [
+        1560346028262293555,
+        1560346030417907855,
+        1560346032921903105,
+        1560346035312660522
+      ],
+      "complete": true,
+      "hash": "763b55dd8c085966cb79bdeddec982a6d6ab158b5a332fb3830ab7f7ca460ffd",
+      "format_version": 2,
+      "title": "Aion 2 Dungeon List (Global Servers)",
+      "updated_at": "2026-10-15T17:38:05.141388+00:00"
+    },
+    "https://daevaguides.com/en/guides/fire-temple/index.html": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346038198337688,
+      "thread_id": 1560346038198337688,
+      "part_ids": [
+        1560346039741972583,
+        1560346042451628173,
+        1560346045127598242,
+        1560346047656763544
+      ],
+      "complete": true,
+      "hash": "482bc1c659afb72a9cc1aa740956f6ac6648ae17aa0653b502e4321278c39b03",
+      "format_version": 2,
+      "title": "Aion 2 Fire Temple Guide",
+      "updated_at": "2026-10-15T17:38:08.092807+00:00"
+    },
+    "https://daevaguides.com/en/guides/krao-cave/index.html": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346050466947133,
+      "thread_id": 1560346050466947133,
+      "part_ids": [
+        1560346055332077599,
+        1560346057475358811,
+        1560346060432605208,
+        1560346063167029309
+      ],
+      "complete": true,
+      "hash": "0ca2f7a38ef39dbfb06ada78ed8d6c7e1f77597ea7c9d02a225198fcbd8009d7",
+      "format_version": 2,
+      "title": "Aion 2 Krao Cave Guide for New Players",
+      "updated_at": "2026-10-15T17:38:11.703690+00:00"
+    },
+    "https://daevaguides.com/en/guides/spacetime-rift/index.html": {
+      "channel": "pvp-abyss",
+      "message_id": 1560346065369170042,
+      "thread_id": 1560346065369170042,
+      "part_ids": [
+        1560346067797680236,
+        1560346070922559549,
+        1560346073166381127,
+        1560346075154485361,
+        1560346077884850220
+      ],
+      "complete": true,
+      "hash": "257de642a9ad774c629a516b01158ed6316457b476a8b13803134e6f0eacb4a7",
+      "format_version": 2,
+      "title": "Spacetime Rift in Aion 2",
+      "updated_at": "2026-10-15T17:38:15.291199+00:00"
+    },
+    "https://daevaguides.com/en/guides/gear-progression/index.html": {
+      "channel": "gear-progression",
+      "message_id": 1560346080414011473,
+      "thread_id": 1560346080414011473,
+      "part_ids": [
+        1560346081508860016,
+        1560346084726022176,
+        1560346088257622100,
+        1560346090765688923,
+        1560346093110304899
+      ],
+      "complete": true,
+      "hash": "b6ec9f2ebea8705734a579ee6fef2230342b4b90f7d6458456a5775cccb4797f",
+      "format_version": 2,
+      "title": "Aion 2 Gear Progression, Step by Step",
+      "updated_at": "2026-10-15T17:38:18.888409+00:00"
+    },
+    "https://daevaguides.com/en/guides/daily-weekly-checklist/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346095027101719,
+      "thread_id": 1560346095027101719,
+      "part_ids": [
+        1560346097925497095,
+        1560346100194607148,
+        1560346102027395094,
+        1560346104309088381,
+        1560346106968281209
+      ],
+      "complete": true,
+      "hash": "1039ec7ef6d7ba7b4963ce796da614e8ceecf63d137b89e835baa3ee6fdba4bd",
+      "format_version": 2,
+      "title": "Aion 2 Daily and Weekly Checklist",
+      "updated_at": "2026-10-15T17:38:22.161648+00:00"
+    },
+    "https://daevaguides.com/en/guides/timers/index.html": {
+      "channel": "pvp-abyss",
+      "message_id": 1560346109442924606,
+      "thread_id": 1560346109442924606,
+      "part_ids": [
+        1560346111237951511,
+        1560346114031620319,
+        1560346117084942428,
+        1560346119509381187,
+        1560346122214711357,
+        1560346124282503170,
+        1560346126341771315,
+        1560346128053047459
+      ],
+      "complete": true,
+      "hash": "fd5e798a8ff517fec97ce8469b1973d1f0a1d57bcf54d8dbc453b87571b1b9a1",
+      "format_version": 2,
+      "title": "Aion 2 Timers: Spacetime Rift, Shugo Festival, Invasions, Bosses and Reset",
+      "updated_at": "2026-10-15T17:38:27.258693+00:00"
+    },
+    "https://daevaguides.com/en/guides/codes/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346130464772149,
+      "thread_id": 1560346130464772149,
+      "part_ids": [
+        1560346131798429807,
+        1560346133853765767
+      ],
+      "complete": true,
+      "hash": "04a9c69f39924ccedeba742a061cf928ba26688536bc63f521d0be3239cc2ad7",
+      "format_version": 2,
+      "title": "Aion 2 Codes — Global Coupons",
+      "updated_at": "2026-10-15T17:38:28.663769+00:00"
+    },
+    "https://daevaguides.com/en/guides/is-aion-2-pay-to-win/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346136349253633,
+      "thread_id": 1560346136349253633,
+      "part_ids": [
+        1560346137636896821,
+        1560346140229247032,
+        1560346142569660429,
+        1560346145941618783
+      ],
+      "complete": true,
+      "hash": "e2cb51a5bc61c4016fc2c05a42cce8cc20944317bd93bbe4f24fe59ca47644ff",
+      "format_version": 2,
+      "title": "Is Aion 2 Pay to Win?",
+      "updated_at": "2026-10-15T17:38:31.500924+00:00"
+    },
+    "https://daevaguides.com/en/guides/daevanion-guide/index.html": {
+      "channel": "gear-progression",
+      "message_id": 1560346148613525665,
+      "thread_id": 1560346148613525665,
+      "part_ids": [
+        1560346150777655367,
+        1560346153902411787,
+        1560346156125528207,
+        1560346158432256001
+      ],
+      "complete": true,
+      "hash": "d44cb37adfcd296e3e4a7e1d31eac2f474cba82336093407494ec929bff3469a",
+      "format_version": 2,
+      "title": "Aion 2 Daevanion Board Guide for Beginners",
+      "updated_at": "2026-10-15T17:38:34.439439+00:00"
+    },
+    "https://daevaguides.com/en/guides/reset-times/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346161343234212,
+      "thread_id": 1560346161343234212,
+      "part_ids": [
+        1560346164358946858,
+        1560346166875529270,
+        1560346169920458815
+      ],
+      "complete": true,
+      "hash": "f360c7731760f4d7a3ee6d01e62697742882863f759c58605d0ad755023b5f34",
+      "format_version": 2,
+      "title": "Aion 2 Daily and Weekly Reset Times (EU and NA)",
+      "updated_at": "2026-10-15T17:38:37.169495+00:00"
+    },
+    "https://daevaguides.com/en/guides/global-vs-korea/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346172072399010,
+      "thread_id": 1560346172072399010,
+      "part_ids": [
+        1560346174337060997,
+        1560346177864597668,
+        1560346180351950983,
+        1560346182574669906
+      ],
+      "complete": true,
+      "hash": "8ca2247933890a2de55b066fcbf6469f6f044193fb6ff642324a1317fb842d5e",
+      "format_version": 2,
+      "title": "Aion 2 Global vs Korea and Taiwan — What's Different",
+      "updated_at": "2026-10-15T17:38:40.168385+00:00"
+    },
+    "https://daevaguides.com/en/guides/slowniczek/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346184898576459,
+      "thread_id": 1560346184898576459,
+      "part_ids": [
+        1560346191680639097,
+        1560346193890910519,
+        1560346195854106647,
+        1560346198403981425,
+        1560346200689999943,
+        1560346202552279064
+      ],
+      "complete": true,
+      "hash": "1760ecfe6bc725561e2f5317247bc50850a662aa25d922e9429fc0a29ec815a8",
+      "format_version": 2,
+      "title": "Aion 2 Glossary: Game Terms A to Z",
+      "updated_at": "2026-10-15T17:38:45.026060+00:00"
+    },
+    "https://daevaguides.com/en/guides/pets-genus-insight/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346204984840303,
+      "thread_id": 1560346204984840303,
+      "part_ids": [
+        1560346207543361589,
+        1560346209774870569,
+        1560346213008674918,
+        1560346215252758609,
+        1560346217769078967,
+        1560346220235329652
+      ],
+      "complete": true,
+      "hash": "b281419c834cc9e586cf2d2dd132bac21dce23cd1c60708de306e6578ef2945b",
+      "format_version": 2,
+      "title": "Aion 2 Pets and Genus Insight Guide",
+      "updated_at": "2026-10-15T17:38:49.179271+00:00"
+    },
+    "https://daevaguides.com/en/guides/server-status-maintenance/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346222265634949,
+      "thread_id": 1560346222265634949,
+      "part_ids": [
+        1560346224224108688,
+        1560346226774515744,
+        1560346229773172857,
+        1560346232772366419
+      ],
+      "complete": true,
+      "hash": "cee084ed0b68fedc8e85415b9aec7a7a428955564f46acb1ff9d2357a27359c1",
+      "format_version": 2,
+      "title": "Aion 2 Server Status: Maintenance, Outages and Patch Notes",
+      "updated_at": "2026-10-15T17:38:52.361386+00:00"
+    },
+    "https://daevaguides.com/en/guides/server-transfer/index.html": {
+      "channel": "guides-library",
+      "message_id": 1560346235830018079,
+      "thread_id": 1560346235830018079,
+      "part_ids": [
+        1560346241215373455,
+        1560346243828547636,
+        1560346246168969227,
+        1560346248899338271,
+        1560346251269120011,
+        1560346253387374739
+      ],
+      "complete": true,
+      "hash": "44b11b29a136bfb40b64a4b3e7fe9bfb833175fcfdb635fb9eee42011f2f89f5",
+      "format_version": 2,
+      "title": "Aion 2 Server Transfer — Schedule, Rules and FAQ",
+      "updated_at": "2026-10-15T17:38:57.076080+00:00"
+    },
+    "https://daevaguides.com/en/guides/stigmas-guide/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560346255815610379,
+      "thread_id": 1560346255815610379,
+      "part_ids": [
+        1560346257468432476,
+        1560346260479934618,
+        1560346263164289087,
+        1560346265412313150
+      ],
+      "complete": true,
+      "hash": "0108fecdff8bdf9152e95f8117fb1d36d9ff416b15a92459c19d01e843a3cd27",
+      "format_version": 2,
+      "title": "Aion 2 Stigma Guide: Slots, Shards and What to Pick",
+      "updated_at": "2026-10-15T17:38:59.920068+00:00"
+    },
+    "https://daevaguides.com/en/guides/can-you-change-class/index.html": {
+      "channel": "class-builds",
+      "message_id": 1560346267438030859,
+      "thread_id": 1560346267438030859,
+      "part_ids": [
+        1560346269208285278,
+        1560346271695245354,
+        1560346273893060712
+      ],
+      "complete": true,
+      "hash": "f8681e45ce4c00c5cee79bec1380afb47412c7b3c5e569f974b1adc97d9f494b",
+      "format_version": 2,
+      "title": "Aion 2: Can You Change Class, Appearance, Gender, Name or Server?",
+      "updated_at": "2026-10-15T17:39:01.959951+00:00"
+    },
+    "https://daevaguides.com/en/guides/kinah-farming/index.html": {
+      "channel": "crafting-farming",
+      "message_id": 1560346276170834001,
+      "thread_id": 1560346276170834001,
+      "part_ids": [
+        1560346278079238260,
+        1560346281480818699,
+        1560346283946803212,
+        1560346287684067361,
+        1560346290116886764
+      ],
+      "complete": true,
+      "hash": "b3426c5a37345a15c5170ac3ce6a59cbd4b853bc8ffbb5bff1265912b129e95d",
+      "format_version": 2,
+      "title": "How to Make Kina in Aion 2 Without Paying",
+      "updated_at": "2026-10-15T17:39:05.879826+00:00"
+    },
+    "https://aion2t.com/guides/ferocious-horn-den": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346292457181215,
+      "thread_id": 1560346292457181215,
+      "part_ids": [
+        1560346294495608835,
+        1560346297138155691,
+        1560346299579236382,
+        1560346301751885825
+      ],
+      "complete": true,
+      "hash": "6a0a61b676c7ac438eed63ecd07eef6c432b4314b3d8fa214017fe12cbca6f37",
+      "format_version": 2,
+      "title": "Ferocious Horn Den — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:08.588339+00:00"
+    },
+    "https://aion2t.com/guides/shattered-arkanis-stage-4": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346303693848658,
+      "thread_id": 1560346303693848658,
+      "part_ids": [
+        1560346307992879274,
+        1560346310161465424,
+        1560346313067855983,
+        1560346315362144306
+      ],
+      "complete": true,
+      "hash": "942d94b62b143869904e1c5aebea2bd50b9d12eca686720ae010c828f119c1e9",
+      "format_version": 2,
+      "title": "Shattered Arkanis (Stage 4) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:11.920813+00:00"
+    },
+    "https://aion2t.com/guides/fire-temple": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346317933256747,
+      "thread_id": 1560346317933256747,
+      "part_ids": [
+        1560346319728418898,
+        1560346322391924806,
+        1560346324879147038,
+        1560346327202799630
+      ],
+      "complete": true,
+      "hash": "fd21473a1a404e97fcd8267671a69e25bb08deb7addee06f142bc0e66042f2c1",
+      "format_version": 2,
+      "title": "Fire Temple — Dungeon Guide (Normal & Hard)",
+      "updated_at": "2026-10-15T17:39:14.731646+00:00"
+    },
+    "https://aion2t.com/guides/urugugu-canyon": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346329652142142,
+      "thread_id": 1560346329652142142,
+      "part_ids": [
+        1560346332336488599,
+        1560346334698147982,
+        1560346337000554527
+      ],
+      "complete": true,
+      "hash": "483dbf0c64ead67345290b43fba26837a68f5cdd6bd8c4f7ee8ac543e84f06eb",
+      "format_version": 2,
+      "title": "Urugugu Canyon — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:16.995924+00:00"
+    },
+    "https://aion2t.com/guides/vakron-sky-island-hard": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346339081199658,
+      "thread_id": 1560346339081199658,
+      "part_ids": [
+        1560346342033858691,
+        1560346344634187879,
+        1560346347041849463
+      ],
+      "complete": true,
+      "hash": "006ccfc7caca85d802cabbfe3d6e8e0f5434ddb9570c03b7b0164b1584ff05e6",
+      "format_version": 2,
+      "title": "Floating Island of Vakron (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:19.389574+00:00"
+    },
+    "https://aion2t.com/guides/start-guide-global": {
+      "channel": "guides-library",
+      "message_id": 1560346349340327974,
+      "thread_id": 1560346349340327974,
+      "part_ids": [
+        1560346351437357159,
+        1560346353954066503,
+        1560346356814581840,
+        1560346359096152137,
+        1560346361562660964,
+        1560346364255142052
+      ],
+      "complete": true,
+      "hash": "f53a2d0aaff3596d9800c08d20cc1205b80b12e2cbf532bfa1f40b96c2fcf391",
+      "format_version": 2,
+      "title": "Aion 2 Global: starting guide — what to do from day one",
+      "updated_at": "2026-10-15T17:39:23.746435+00:00"
+    },
+    "https://aion2t.com/guides/noirans-hidden-legacy": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346367799468244,
+      "thread_id": 1560346367799468244,
+      "part_ids": [
+        1560346369695289426,
+        1560346372161544233,
+        1560346374200107180,
+        1560346376791924766,
+        1560346378712907879,
+        1560346381376430261
+      ],
+      "complete": true,
+      "hash": "cbfe4c869df6eed44803d0ec7156a854b294b6e418e387f77133ec3cf0475d32",
+      "format_version": 2,
+      "title": "Noiran's Hidden Legacy — Stage 4 Guide",
+      "updated_at": "2026-10-15T17:39:27.557114+00:00"
+    },
+    "https://aion2t.com/guides/sanctuary-3-hard": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346383544746056,
+      "thread_id": 1560346383544746056,
+      "part_ids": [
+        1560346385755406376,
+        1560346393107763331,
+        1560346396928778300,
+        1560346399697010758,
+        1560346402712977428,
+        1560346405778755595,
+        1560346409302229085
+      ],
+      "complete": true,
+      "hash": "a59a207bb40047d616789b6227552659ebe41bc188390d35f70bd2af094584e8",
+      "format_version": 2,
+      "title": "Sanctuary 3: Chalice of Muspel (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:34.404425+00:00"
+    },
+    "https://aion2t.com/guides/abyssal-horn-den-t4": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346412141781195,
+      "thread_id": 1560346412141781195,
+      "part_ids": [
+        1560346413873893607,
+        1560346416382214275,
+        1560346418613592165
+      ],
+      "complete": true,
+      "hash": "cc4b7110acfedc3a0c4be9a37fd6edec598f57364aa88c6b72be8197b5b07c82",
+      "format_version": 2,
+      "title": "Abyssal Horn Den (Transcendence Stages 1-4) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:36.475765+00:00"
+    },
+    "https://aion2t.com/guides/citadel-of-the-fallen-daeva-hard": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346420773658635,
+      "thread_id": 1560346420773658635,
+      "part_ids": [
+        1560346425429205154,
+        1560346428016955556,
+        1560346431351685130
+      ],
+      "complete": true,
+      "hash": "00ec841c715c4748f1c4b0d1dbfc5ea776bba3f125051dd5192f42388e2a9fbe",
+      "format_version": 2,
+      "title": "Citadel of the Fallen Daeva (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:39:39.486363+00:00"
+    },
+    "https://aion2t.com/guides/mirror-of-scarlet-desire": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346433406640141,
+      "thread_id": 1560346433406640141,
+      "part_ids": [
+        1560346435352928318,
+        1560346437135638550,
+        1560346439807139965,
+        1560346442219126817
+      ],
+      "complete": true,
+      "hash": "c81d2828fb9a58ac40be56b6aeff17de1ccf0291afb7034c462024f3f9045d98",
+      "format_version": 2,
+      "title": "Mirror of Scarlet Desire — Dungeon Guide (Levels 1–4)",
+      "updated_at": "2026-10-15T17:39:42.269714+00:00"
+    },
+    "https://aion2t.com/guides/azure-breath-island-hard": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560346445020925954,
+      "thread_id": 1560346445020925954,
+      "part_ids": [
+        1560347027261362247,
+        1560347029840855060,
+        1560347032311300207
+      ],
+      "complete": true,
+      "hash": "a0156340d17fbb57c792263bfd35542bc0397025ac326377fb684b7e4c44ea65",
+      "format_version": 2,
+      "title": "Azure Breath Island (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:02.818600+00:00"
+    },
+    "https://aion2t.com/guides/sanctuary-corroded-decontamination": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347034660376720,
+      "thread_id": 1560347034660376720,
+      "part_ids": [
+        1560347037352857700,
+        1560347039810724011,
+        1560347042578964494,
+        1560347044923707434,
+        1560347047524180032,
+        1560347050065924166
+      ],
+      "complete": true,
+      "hash": "1c4ab757ef81b751154908f45671d6c43bb45199b070abed8d512d056f1edbcc",
+      "format_version": 2,
+      "title": "Sanctuary: Corroded Decontamination Facility — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:07.030291+00:00"
+    },
+    "https://aion2t.com/guides/hall-of-illusions-hard": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347052574244955,
+      "thread_id": 1560347052574244955,
+      "part_ids": [
+        1560347055518654616,
+        1560347057762599032,
+        1560347059905626215
+      ],
+      "complete": true,
+      "hash": "9897398fdf6b3bb715edcfddc1ac0a3d36220e72e132d0057a5ef502766d06b8",
+      "format_version": 2,
+      "title": "Hall of Illusions (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:09.421876+00:00"
+    },
+    "https://aion2t.com/guides/deus-research-base": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347062334263302,
+      "thread_id": 1560347062334263302,
+      "part_ids": [
+        1560347082060210226,
+        1560347084543107092,
+        1560347086891778160
+      ],
+      "complete": true,
+      "hash": "6e6a995d6bb05b8a6d5c3314eb9175be1605e60834c8192f236b2c105440482f",
+      "format_version": 2,
+      "title": "Deus Research Base — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:15.787934+00:00"
+    },
+    "https://aion2t.com/guides/nightmare-kaisinel": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347088913698869,
+      "thread_id": 1560347088913698869,
+      "part_ids": [
+        1560347093116260402,
+        1560347096291213502,
+        1560347099646918769,
+        1560347102771413054
+      ],
+      "complete": true,
+      "hash": "0b1bde618c78c9bdf507e23fe49e1c46b6c3587c98871983ab29b1b5a90a7f05",
+      "format_version": 2,
+      "title": "Nightmare: Kaisinel's Illusion — Boss Guide",
+      "updated_at": "2026-10-15T17:42:19.685732+00:00"
+    },
+    "https://aion2t.com/guides/sanctuary-ludra": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347105158107161,
+      "thread_id": 1560347105158107161,
+      "part_ids": [
+        1560347118143541389,
+        1560347120832090212,
+        1560347123310919800,
+        1560347125357740046
+      ],
+      "complete": true,
+      "hash": "566febbf6cc9deb04d2e867982653528a5798edf717dc886a83a324dbe43e26e",
+      "format_version": 2,
+      "title": "Sanctuary (Ludra) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:25.153723+00:00"
+    },
+    "https://aion2t.com/guides/draupnir": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347128981749992,
+      "thread_id": 1560347128981749992,
+      "part_ids": [
+        1560347130684506213,
+        1560347132907487382,
+        1560347135415685150
+      ],
+      "complete": true,
+      "hash": "d09999c48754e27cdedf26796bb2bb75d5d108ff60258eab6643650bb589b248",
+      "format_version": 2,
+      "title": "Draupnir (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:27.354610+00:00"
+    },
+    "https://aion2t.com/guides/krao-cave": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347137206653073,
+      "thread_id": 1560347137206653073,
+      "part_ids": [
+        1560347143938515046,
+        1560347146593767566,
+        1560347149345095720,
+        1560347152171929672
+      ],
+      "complete": true,
+      "hash": "27c87b0d9a8f9b481be255e7c450b6c51f2f43672dac8ab19ae6684637afa54c",
+      "format_version": 2,
+      "title": "Krao Cave (Hard) — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:31.367310+00:00"
+    },
+    "https://aion2t.com/guides/cradle-of-nihility": {
+      "channel": "dungeons-bosses",
+      "message_id": 1560347154336190594,
+      "thread_id": 1560347154336190594,
+      "part_ids": [
+        1560347156265832509,
+        1560347158614380736,
+        1560347170723467344
+      ],
+      "complete": true,
+      "hash": "a12b9de08048f8e787bf58c99cc7fc06e93e05864237ef9be939c2920734ba0c",
+      "format_version": 2,
+      "title": "Cradle of Nihility — Dungeon Guide",
+      "updated_at": "2026-10-15T17:42:35.872120+00:00"
+    },
+    "https://daevaguides.com/en/templar/index.html": {
+      "channel": "templar",
+      "message_id": 1560347173043044505,
+      "thread_id": 1560347173043044505,
+      "part_ids": [
+        1560347175664353433
+      ],
+      "complete": true,
+      "hash": "0ccb71bd8eb007fb495add6111d8839ba133ba4bcd46b11b7abcdb86266f12ea",
+      "format_version": 2,
+      "title": "Templar — Class Overview",
+      "updated_at": "2026-10-15T17:42:36.977705+00:00"
+    },
+    "https://daevaguides.com/en/gladiator/index.html": {
+      "channel": "gladiator",
+      "message_id": 1560347178013032530,
+      "thread_id": 1560347178013032530,
+      "part_ids": [
+        1560347180164845569
+      ],
+      "complete": true,
+      "hash": "21f8ab647a7c60052e69a46501366b5f10e287cb70fead42f30ff4d5a49f9ca8",
+      "format_version": 2,
+      "title": "Gladiator — Class Overview",
+      "updated_at": "2026-10-15T17:42:38.047096+00:00"
+    },
+    "https://daevaguides.com/en/assassin/index.html": {
+      "channel": "assassin",
+      "message_id": 1560347182266056826,
+      "thread_id": 1560347182266056826,
+      "part_ids": [
+        1560347183994241128
+      ],
+      "complete": true,
+      "hash": "74b6ddf712febbd67f2e6e9ef618acd05bb0911b9ecfc991b7efda0309d7fc5b",
+      "format_version": 2,
+      "title": "Assassin — Class Overview",
+      "updated_at": "2026-10-15T17:42:38.966355+00:00"
+    },
+    "https://daevaguides.com/en/ranger/index.html": {
+      "channel": "ranger",
+      "message_id": 1560347186271625418,
+      "thread_id": 1560347186271625418,
+      "part_ids": [
+        1560347188784009327
+      ],
+      "complete": true,
+      "hash": "ca75f72998a90a0efd123d0bae3a86253797ca5e167d66debb8e2e63522649eb",
+      "format_version": 2,
+      "title": "Ranger — Class Overview",
+      "updated_at": "2026-10-15T17:42:40.097123+00:00"
+    },
+    "https://daevaguides.com/en/sorcerer/index.html": {
+      "channel": "sorcerer",
+      "message_id": 1560347190960984065,
+      "thread_id": 1560347190960984065,
+      "part_ids": [
+        1560347193674694811
+      ],
+      "complete": true,
+      "hash": "63e8db407cc7c19ae58037948afc6f94da93712ce9e7ce35c916a16184f2837c",
+      "format_version": 2,
+      "title": "Sorcerer — Class Overview",
+      "updated_at": "2026-10-15T17:42:41.325183+00:00"
+    },
+    "https://daevaguides.com/en/cleric/index.html": {
+      "channel": "cleric",
+      "message_id": 1560347196245807185,
+      "thread_id": 1560347196245807185,
+      "part_ids": [
+        1560347198749802687
+      ],
+      "complete": true,
+      "hash": "304396efba7b9d003e1b3f47c5658d05da3b1e85566ebb705444bca596731ce4",
+      "format_version": 2,
+      "title": "Cleric — Class Overview",
+      "updated_at": "2026-10-15T17:42:42.488774+00:00"
+    },
+    "https://daevaguides.com/en/chanter/index.html": {
+      "channel": "chanter",
+      "message_id": 1560347201043955764,
+      "thread_id": 1560347201043955764,
+      "part_ids": [
+        1560347204433223723
+      ],
+      "complete": true,
+      "hash": "628131c434a01f86152fef296af010e31e41ffb2f3fd0fda04beb6d3ef45d1b1",
+      "format_version": 2,
+      "title": "Chanter — Class Overview",
+      "updated_at": "2026-10-15T17:42:43.864754+00:00"
     }
   }
 }
