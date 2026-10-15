@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """AION 2 guide discovery and Discord publishing. No paid APIs.
 Default MODE=check: inspect sources without posting or changing history.
-MODE=publish: seed existing links on first run; post only later discoveries.
+MODE=publish: publish new guides and update changed articles in place.
 """
 import os, re, json, sys, logging, asyncio, hashlib
 from pathlib import Path
@@ -107,23 +107,35 @@ def discover_aion2t(name,url,domain):
     return found
 
 def discover_class_pages():
-    url="https://daevaguides.com/en/"
-    response=requests.get(url,headers=HEADERS,timeout=25)
+    """Find only verified class URLs; never invent a missing class page."""
+    base="https://daevaguides.com/en/"
+    names=("gladiator","templar","assassin","ranger","sorcerer","spiritmaster","cleric","chanter")
+    response=requests.get(base,headers=HEADERS,timeout=25)
     response.raise_for_status()
     soup=BeautifulSoup(response.text,"html.parser")
     found={}
-    names=("gladiator","templar","assassin","ranger","sorcerer","spiritmaster","cleric","chanter")
+    found_classes=set()
     for a in soup.select("a[href]"):
-        href=canonical(urljoin(url,a["href"]))
+        href=canonical(urljoin(base,a["href"]))
         p=urlparse(href)
-        if p.netloc.lower().removeprefix("www.")!="daevaguides.com":continue
-        path=p.path.lower().strip("/").split("/")
-        matches=[c for c in names if c in path]
-        if len(matches)!=1:continue
+        if p.netloc.lower().removeprefix("www.")!="daevaguides.com":
+            continue
+        segments=p.path.lower().strip("/").split("/")
+        matches=[c for c in names if c in segments]
+        if len(matches)!=1:
+            continue
         cls=matches[0]
-        if href not in found:
-            found[href]={"title":cls.title()+" — Full Class Guide","source":"Daeva Guides","url":href,"class_channel":cls}
-    LOG.info("DAEVA CLASS PAGES: %d found",len(found))
+        if cls in found_classes:
+            continue
+        found[href]={"title":cls.title()+" — Class Overview",
+                     "source":"Daeva Guides","url":href,"class_channel":cls}
+        found_classes.add(cls)
+        LOG.info("CLASS FOUND [%s] %s",cls,href)
+    missing=sorted(set(names)-found_classes)
+    if missing:
+        LOG.warning("CLASS PAGES MISSING: %s. No URLs will be invented.",", ".join(missing))
+        LOG.warning("These channels remain empty until an actual class page is identified.")
+    LOG.info("DAEVA CLASS PAGES: %d/8 found",len(found_classes))
     return found
 
 def channel_for(item):
