@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 logging.basicConfig(level=logging.INFO,format="%(levelname)s %(message)s")
 LOG=logging.getLogger("guides")
 STATE=Path("guides_state.json")
+FORMAT_VERSION=2
 SOURCES=[
  ("Daeva Guides","https://daevaguides.com/en/guides/","daevaguides.com"),
  ("Aion2t","https://aion2t.com/guides","aion2t.com"),
@@ -211,7 +212,9 @@ def chunks(body, limit=1850):
             if current:result.append(current)
             current=paragraph
         else:
-            current=(current+"\n\n"+paragraph).strip()
+            # Compact spacing; keep a visual break before section headings.
+            separator="\n\n" if paragraph.startswith("**") else "\n"
+            current=(current+separator+paragraph).strip()
     if current: result.append(current)
     return result
 
@@ -237,6 +240,21 @@ def channel_for_full(item):
     if "stigma" in slug: return "class-builds"
     return channel_for(item)
 
+def guide_embed(item, channel_name, body):
+    import discord
+    source=item["source"]
+    overview="Class overview" if item.get("class_channel") else "Complete guide"
+    category=channel_name.replace("-", " ").title()
+    description=(
+        f"📖 **{overview}** · {category}\\n"
+        f"Read the full article in the thread below.\\n\\n"
+        f"🔗 **Original:** [Read on {source}]({item['url']})"
+    )
+    embed=discord.Embed(title=item["title"][:256],url=item["url"],
+                        description=description,color=0x334472)
+    embed.set_footer(text=f"Source: {source} • {len(body):,} characters • English")
+    return embed
+
 async def sync_discord(items,state,token,guild_id):
     import discord
     client=discord.Client(intents=discord.Intents.default())
@@ -249,17 +267,17 @@ async def sync_discord(items,state,token,guild_id):
             for index,(item,body,digest) in enumerate(items,1):
                 url=item["url"]
                 saved=state["guides"].get(url,{})
-                if saved.get("hash")==digest and saved.get("complete"):
+                if saved.get("hash")==digest and saved.get("complete") and saved.get("format_version")==FORMAT_VERSION:
                     LOG.info("Unchanged: %s",url);continue
                 channel_name=saved.get("channel") or channel_for_full(item)
                 channel=discord.utils.get(guild.text_channels,name=channel_name)
                 if channel is None:raise RuntimeError(f"Missing channel #{channel_name}")
                 try:
+                    embed=guide_embed(item,channel_name,body)
                     if saved.get("message_id"):
                         message=await channel.fetch_message(int(saved["message_id"]))
+                        await message.edit(embed=embed,allowed_mentions=allowed)
                     else:
-                        embed=discord.Embed(title=item["title"][:256],url=url,
-                            description="Full guide in the thread below. Source: "+item["source"],color=0x334472)
                         message=await channel.send(embed=embed,allowed_mentions=allowed)
                         saved={"channel":channel_name,"message_id":message.id,"thread_id":None,"part_ids":[],"complete":False}
                         state["guides"][url]=saved;save_state(state)
@@ -286,6 +304,7 @@ async def sync_discord(items,state,token,guild_id):
                     saved["part_ids"]=ids[:len(parts)]
                     saved["hash"]=digest
                     saved["complete"]=True
+                    saved["format_version"]=FORMAT_VERSION
                     saved["title"]=item["title"]
                     saved["updated_at"]=datetime.now(timezone.utc).isoformat()
                     save_state(state)
@@ -315,7 +334,9 @@ def main():
         try:
             body=extract_article(item)
             digest=hashlib.sha256(body.encode("utf-8")).hexdigest()
-            if state["guides"].get(item["url"],{}).get("hash")==digest and state["guides"][item["url"]].get("complete"):
+            if (state["guides"].get(item["url"],{}).get("hash")==digest
+                and state["guides"][item["url"]].get("complete")
+                and state["guides"][item["url"]].get("format_version")==FORMAT_VERSION):
                 continue
             prepared.append((item,body,digest))
             LOG.info("READY [%s] %s: %d chars, %d messages",channel_for_full(item),item["title"],len(body),len(chunks(body)))
@@ -331,6 +352,8 @@ def main():
     if prepared:
         limit = int(os.getenv("GUIDES_PUBLISH_LIMIT", "0"))
         if limit > 0:
+            # Update existing guides first, so testing does not create a new guide.
+            prepared.sort(key=lambda entry: (0 if state["guides"].get(entry[0]["url"],{}).get("message_id") else 1))
             prepared = prepared[:limit]
             LOG.info("TEST MODE: publishing only %d guide(s)", len(prepared))
 
