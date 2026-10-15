@@ -40,5 +40,9 @@ class ChannelCreator(discord.Client):
             await self.close()
 
 if __name__ == "__main__":
+    print("START: create_class_channels.py", flush=True)
+
     client = ChannelCreator(intents=discord.Intents.default())
-    client.run(os.environ["DISCORD_BOT_TOKEN"], log_handler=None)
+
+    print("Connecting to Discord...", flush=True)
+    client.run(os.environ["DISCORD_BOT_TOKEN"])
