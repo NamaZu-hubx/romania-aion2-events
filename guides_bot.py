@@ -329,7 +329,17 @@ def main():
         LOG.info("CHECK ONLY: no Discord messages or state changes")
         return
     if prepared:
-        asyncio.run(sync_discord(prepared,state,os.environ["DISCORD_BOT_TOKEN"],os.environ["DISCORD_GUILD_ID"]))
+    limit = int(os.getenv("GUIDES_PUBLISH_LIMIT", "0"))
+    if limit > 0:
+        prepared = prepared[:limit]
+        LOG.info("TEST MODE: publishing only %d guide(s)", len(prepared))
+
+    asyncio.run(sync_discord(
+        prepared,
+        state,
+        os.environ["DISCORD_BOT_TOKEN"],
+        os.environ["DISCORD_GUILD_ID"]
+    ))
     save_state(state)
 
 if __name__=="__main__":
