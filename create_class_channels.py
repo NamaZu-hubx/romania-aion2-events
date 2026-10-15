@@ -16,7 +16,13 @@ class ChannelCreator(discord.Client):
             guild = self.get_guild(int(os.environ["DISCORD_GUILD_ID"]))
             if guild is None:
                 raise RuntimeError("Discord server not found; check DISCORD_GUILD_ID")
-            category = discord.utils.get(guild.categories, name=CATEGORY_NAME)
+            category = next(
+    (
+        c for c in guild.categories
+        if "AION 2 GUIDES" in c.name.upper()
+    ),
+    None
+)
             if category is None:
                 raise RuntimeError(f"Category '{CATEGORY_NAME}' not found. No channels created.")
             for name in CLASSES:
