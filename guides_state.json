@@ -979,10 +979,10 @@
         1560347175664353433
       ],
       "complete": true,
-      "hash": "0ccb71bd8eb007fb495add6111d8839ba133ba4bcd46b11b7abcdb86266f12ea",
+      "hash": "18aba49ce1f4c9139b1e8dda4e8cb29a49cc48a2d4cea498e97a913080c22f7e",
       "format_version": 2,
       "title": "Templar — Class Overview",
-      "updated_at": "2026-10-15T17:42:36.977705+00:00"
+      "updated_at": "2026-10-19T07:14:48.533940+00:00"
     },
     "https://daevaguides.com/en/gladiator/index.html": {
       "channel": "gladiator",
@@ -992,10 +992,10 @@
         1560347180164845569
       ],
       "complete": true,
-      "hash": "21f8ab647a7c60052e69a46501366b5f10e287cb70fead42f30ff4d5a49f9ca8",
+      "hash": "54ebed8bd2b508e2c8316e7317c79df85b7a4633c5f8a52675ac6ff7b5a7863f",
       "format_version": 2,
       "title": "Gladiator — Class Overview",
-      "updated_at": "2026-10-15T17:42:38.047096+00:00"
+      "updated_at": "2026-10-19T07:14:49.726577+00:00"
     },
     "https://daevaguides.com/en/assassin/index.html": {
       "channel": "assassin",
@@ -1005,10 +1005,10 @@
         1560347183994241128
       ],
       "complete": true,
-      "hash": "74b6ddf712febbd67f2e6e9ef618acd05bb0911b9ecfc991b7efda0309d7fc5b",
+      "hash": "6329e70f3e6ce9ef1a2da46eff7d37f515622dd6df8785ca59726e9ace515770",
       "format_version": 2,
       "title": "Assassin — Class Overview",
-      "updated_at": "2026-10-15T17:42:38.966355+00:00"
+      "updated_at": "2026-10-19T07:14:51.035489+00:00"
     },
     "https://daevaguides.com/en/ranger/index.html": {
       "channel": "ranger",
@@ -1018,10 +1018,10 @@
         1560347188784009327
       ],
       "complete": true,
-      "hash": "ca75f72998a90a0efd123d0bae3a86253797ca5e167d66debb8e2e63522649eb",
+      "hash": "604af7db256e5956729f31e701cea673cd4f3166f592151ae9b8f413cdbc2cb9",
       "format_version": 2,
       "title": "Ranger — Class Overview",
-      "updated_at": "2026-10-15T17:42:40.097123+00:00"
+      "updated_at": "2026-10-19T07:14:52.206529+00:00"
     },
     "https://daevaguides.com/en/sorcerer/index.html": {
       "channel": "sorcerer",
@@ -1031,10 +1031,10 @@
         1560347193674694811
       ],
       "complete": true,
-      "hash": "63e8db407cc7c19ae58037948afc6f94da93712ce9e7ce35c916a16184f2837c",
+      "hash": "535806a008be723dbe84b37d9dbc12b24078b340ef2f8764eab7c15bc138ec6c",
       "format_version": 2,
       "title": "Sorcerer — Class Overview",
-      "updated_at": "2026-10-15T17:42:41.325183+00:00"
+      "updated_at": "2026-10-19T07:14:53.630076+00:00"
     },
     "https://daevaguides.com/en/cleric/index.html": {
       "channel": "cleric",
@@ -1044,10 +1044,10 @@
         1560347198749802687
       ],
       "complete": true,
-      "hash": "304396efba7b9d003e1b3f47c5658d05da3b1e85566ebb705444bca596731ce4",
+      "hash": "ef806dec27e96103728069b739a3e32ee64a41e2dfb6643faffea9290002d5d3",
       "format_version": 2,
       "title": "Cleric — Class Overview",
-      "updated_at": "2026-10-15T17:42:42.488774+00:00"
+      "updated_at": "2026-10-19T07:14:55.130851+00:00"
     },
     "https://daevaguides.com/en/chanter/index.html": {
       "channel": "chanter",
@@ -1057,10 +1057,23 @@
         1560347204433223723
       ],
       "complete": true,
-      "hash": "628131c434a01f86152fef296af010e31e41ffb2f3fd0fda04beb6d3ef45d1b1",
+      "hash": "ed15b848a8fa2b1489219751a7957cfe4985771bd9365f40a86d92c10620cc86",
       "format_version": 2,
       "title": "Chanter — Class Overview",
-      "updated_at": "2026-10-15T17:42:43.864754+00:00"
+      "updated_at": "2026-10-19T07:14:56.500495+00:00"
+    },
+    "https://daevaguides.com/en/guides/advertising/index.html": {
+      "channel": "guides-library",
+      "message_id": 1561638723588718709,
+      "thread_id": 1561638723588718709,
+      "part_ids": [
+        1561638728957689928
+      ],
+      "complete": true,
+      "hash": "7921cf7d5c5c51250e3c525adbfb42b0ceebb0b898c67ae26e06c7f3675b3f76",
+      "format_version": 2,
+      "title": "Advertising",
+      "updated_at": "2026-10-19T07:14:47.380208+00:00"
     }
   }
 }
