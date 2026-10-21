@@ -431,10 +431,10 @@
         1560346106968281209
       ],
       "complete": true,
-      "hash": "1039ec7ef6d7ba7b4963ce796da614e8ceecf63d137b89e835baa3ee6fdba4bd",
+      "hash": "5b5890e246d86a8aedebe3316ff5c2d97ac710b8cd496801bdc5de652eed1655",
       "format_version": 2,
       "title": "Aion 2 Daily and Weekly Checklist",
-      "updated_at": "2026-10-15T17:38:22.161648+00:00"
+      "updated_at": "2026-10-21T07:10:24.390968+00:00"
     },
     "https://daevaguides.com/en/guides/timers/index.html": {
       "channel": "pvp-abyss",
@@ -580,10 +580,10 @@
         1560346232772366419
       ],
       "complete": true,
-      "hash": "cee084ed0b68fedc8e85415b9aec7a7a428955564f46acb1ff9d2357a27359c1",
+      "hash": "b21c37099bb8aec74f03b8d4fab5115ae44d4dfb8ad347fa3f872f142f37948b",
       "format_version": 2,
       "title": "Aion 2 Server Status: Maintenance, Outages and Patch Notes",
-      "updated_at": "2026-10-15T17:38:52.361386+00:00"
+      "updated_at": "2026-10-21T07:10:30.201293+00:00"
     },
     "https://daevaguides.com/en/guides/server-transfer/index.html": {
       "channel": "guides-library",
@@ -1018,10 +1018,10 @@
         1560347188784009327
       ],
       "complete": true,
-      "hash": "604af7db256e5956729f31e701cea673cd4f3166f592151ae9b8f413cdbc2cb9",
+      "hash": "6c22703a66765c837b469e338848b801118b1a3e8dcd49fc2a127aa007a0d594",
       "format_version": 2,
       "title": "Ranger — Class Overview",
-      "updated_at": "2026-10-19T07:14:52.206529+00:00"
+      "updated_at": "2026-10-21T07:10:31.511008+00:00"
     },
     "https://daevaguides.com/en/sorcerer/index.html": {
       "channel": "sorcerer",
@@ -1074,6 +1074,22 @@
       "format_version": 2,
       "title": "Advertising",
       "updated_at": "2026-10-19T07:14:47.380208+00:00"
+    },
+    "https://daevaguides.com/en/guides/weekly-tracker/index.html": {
+      "channel": "guides-library",
+      "message_id": 1562362404330020875,
+      "thread_id": 1562362404330020875,
+      "part_ids": [
+        1562362407026958428,
+        1562362409354793063,
+        1562362411842011197,
+        1562362414186496071
+      ],
+      "complete": true,
+      "hash": "1ae8846a92a6837d082927955bca6b6972c76a25b92d9c0d4a2289c975d888ac",
+      "format_version": 2,
+      "title": "Weekly tracker: what is left before reset on every character",
+      "updated_at": "2026-10-21T07:10:27.288593+00:00"
     }
   }
 }
