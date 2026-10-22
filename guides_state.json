@@ -345,13 +345,14 @@
         1560346028262293555,
         1560346030417907855,
         1560346032921903105,
-        1560346035312660522
+        1560346035312660522,
+        1562725212338786335
       ],
       "complete": true,
-      "hash": "763b55dd8c085966cb79bdeddec982a6d6ab158b5a332fb3830ab7f7ca460ffd",
+      "hash": "675c76ceade650795c528adb5fae8e265d7e6a44be1e212e1d0bb6817ba65dc7",
       "format_version": 2,
       "title": "Aion 2 Dungeon List (Global Servers)",
-      "updated_at": "2026-10-15T17:38:05.141388+00:00"
+      "updated_at": "2026-10-22T07:12:05.150386+00:00"
     },
     "https://daevaguides.com/en/guides/fire-temple/index.html": {
       "channel": "dungeons-bosses",
@@ -377,13 +378,14 @@
         1560346055332077599,
         1560346057475358811,
         1560346060432605208,
-        1560346063167029309
+        1560346063167029309,
+        1562725247076274240
       ],
       "complete": true,
-      "hash": "0ca2f7a38ef39dbfb06ada78ed8d6c7e1f77597ea7c9d02a225198fcbd8009d7",
+      "hash": "dc1811509ee099ec9abb7cf98db47a69dfc025fe50e935d606d1bd13642661bd",
       "format_version": 2,
       "title": "Aion 2 Krao Cave Guide for New Players",
-      "updated_at": "2026-10-15T17:38:11.703690+00:00"
+      "updated_at": "2026-10-22T07:12:13.420231+00:00"
     },
     "https://daevaguides.com/en/guides/spacetime-rift/index.html": {
       "channel": "pvp-abyss",
@@ -494,13 +496,14 @@
         1560346150777655367,
         1560346153902411787,
         1560346156125528207,
-        1560346158432256001
+        1560346158432256001,
+        1562725292982673440
       ],
       "complete": true,
-      "hash": "d44cb37adfcd296e3e4a7e1d31eac2f474cba82336093407494ec929bff3469a",
+      "hash": "a521a507c5dd40b3a496fdce77bcda0baf832bfe85f34de8c63245a09b7f88e6",
       "format_version": 2,
       "title": "Aion 2 Daevanion Board Guide for Beginners",
-      "updated_at": "2026-10-15T17:38:34.439439+00:00"
+      "updated_at": "2026-10-22T07:12:24.441143+00:00"
     },
     "https://daevaguides.com/en/guides/reset-times/index.html": {
       "channel": "guides-library",
@@ -528,10 +531,10 @@
         1560346182574669906
       ],
       "complete": true,
-      "hash": "8ca2247933890a2de55b066fcbf6469f6f044193fb6ff642324a1317fb842d5e",
+      "hash": "541a7d67352e107fbb926acdcec8ae2ad93e1cc7a48bfc12a347f728a0fca7f1",
       "format_version": 2,
       "title": "Aion 2 Global vs Korea and Taiwan — What's Different",
-      "updated_at": "2026-10-15T17:38:40.168385+00:00"
+      "updated_at": "2026-10-22T07:12:27.824536+00:00"
     },
     "https://daevaguides.com/en/guides/slowniczek/index.html": {
       "channel": "guides-library",
@@ -614,10 +617,10 @@
         1560346265412313150
       ],
       "complete": true,
-      "hash": "0108fecdff8bdf9152e95f8117fb1d36d9ff416b15a92459c19d01e843a3cd27",
+      "hash": "e3cd6a3f49f11bc5baebf70d456d13c5aff52aedd2a0b71c4619f0c6e120db4c",
       "format_version": 2,
       "title": "Aion 2 Stigma Guide: Slots, Shards and What to Pick",
-      "updated_at": "2026-10-15T17:38:59.920068+00:00"
+      "updated_at": "2026-10-22T07:12:30.842120+00:00"
     },
     "https://daevaguides.com/en/guides/can-you-change-class/index.html": {
       "channel": "class-builds",
@@ -979,10 +982,10 @@
         1560347175664353433
       ],
       "complete": true,
-      "hash": "18aba49ce1f4c9139b1e8dda4e8cb29a49cc48a2d4cea498e97a913080c22f7e",
+      "hash": "51ca7b0fb87d043b86385f85c717754e375bc7a7c27b18cb9730546117710615",
       "format_version": 2,
       "title": "Templar — Class Overview",
-      "updated_at": "2026-10-19T07:14:48.533940+00:00"
+      "updated_at": "2026-10-22T07:12:32.139809+00:00"
     },
     "https://daevaguides.com/en/gladiator/index.html": {
       "channel": "gladiator",
@@ -1086,10 +1089,10 @@
         1562362414186496071
       ],
       "complete": true,
-      "hash": "1ae8846a92a6837d082927955bca6b6972c76a25b92d9c0d4a2289c975d888ac",
+      "hash": "20da5f39359ad02d09246efa1070e324229a6dda9f2a91e8b7d3919c802d90fc",
       "format_version": 2,
       "title": "Weekly tracker: what is left before reset on every character",
-      "updated_at": "2026-10-21T07:10:27.288593+00:00"
+      "updated_at": "2026-10-22T07:12:16.513750+00:00"
     }
   }
 }
